@@ -1,0 +1,58 @@
+.admin {
+    width: 100%;
+    height: 90vh;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin > form {
+    width: 600px;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    margin: 20px 0px;
+}
+
+.pro_cost, .pro_name , .pro_file{
+    width: 450px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px auto;
+}
+
+.pro_name > input, .pro_cost > input, .pro_file > input{
+    width: 100%;
+    height: 45px;
+    background-color: #fff;
+    border: 1px solid #919191;
+    border-radius: 10px;
+    font-size: 18px;
+    padding: 8px 20px;
+    color: #787676;
+}
+
+.upload_btn {
+    width: 70%;
+    height: 45px;
+    background-color: #fff;
+    border: 1px solid #1a1a1a;
+    text-indent: 10px;
+    font-size: 18px;
+    margin: auto;
+    transition: 300ms ease;
+    color: #1a1a1a;
+}
+
+.upload_btn:hover {
+    background-color: #1a1a1a;
+    border: none;
+    color: #fff;
+    transition: 300ms ease;
+}
+
