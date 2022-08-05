@@ -2,24 +2,35 @@ import React, { useState } from 'react'
 import c from "./Navbar.module.css";
 import { ImLocation, ImSearch } from "react-icons/im"
 import { IoPersonSharp } from "react-icons/io5";
-import { BsQuestionCircle } from "react-icons/bs"
+import { BsQuestionCircle, BsBag } from "react-icons/bs"
 import Logo from "../../assets/Logo.png";
 import Login from "../../routes/login/Login"
 import NAVBAR_DATA, { shopByStyle } from '../../static/navbar_static';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const Navbar = () => {
   const history = useHistory()
-  const user = useSelector(s => s.auth)
+  const user = useSelector(state => state.auth)
   const [navbarHover, setNavbarHover] = useState(false);
   const [woman, setWoman] = useState(false);
   const [man, setMan] = useState(false);
   const [junior, setJunior] = useState(false)
   const [rebel, setRebel] = useState(false);
   const [loginModal, setLoginModal] = useState(false)
+  const { pathname } = useLocation()
 
-  return (
+  const loginUser = () => {
+    if(user){
+      history.push("/cart")
+      setLoginModal(false)
+    }
+    else {
+      setLoginModal(!loginModal)
+    }
+  }
+
+  return pathname === "/cart" ? <></> :
     <div className={c.navbar} onMouseOut={() => {
       setNavbarHover(false)
       setWoman(false)
@@ -42,9 +53,10 @@ const Navbar = () => {
         </Link>
 
         <div className={c.user_icon}>
-          <IoPersonSharp onClick={() => {
-            user ? history.push("/cart") : setLoginModal(loginModal)
-          }} />
+          
+            {
+              user ?  <IoPersonSharp onClick={loginUser} /> : <BsBag onClick={() => history.push("/cart")} /> 
+            }
           <ImSearch />
         </div>
 
@@ -263,13 +275,12 @@ const Navbar = () => {
 
       </div>
       {
-        loginModal ? <Login func={!loginModal} /> : <></>
+        loginModal ? <Login /> : <></>
       }
       <div className={woman || navbarHover || man || junior || loginModal || rebel ? c.shadow : c.fade} onClick={() => setLoginModal(false)}></div>
 
 
     </div>
-  )
 }
 
 export default Navbar

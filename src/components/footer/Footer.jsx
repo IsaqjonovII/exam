@@ -7,10 +7,12 @@ import { FaFacebookF, FaInstagram, FaTwitter,
          FaYoutube, FaPinterest, FaTumblr, 
          FaSpotify, FaWeibo } from "react-icons/fa"
 import { SiWechat } from "react-icons/si"
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Footer = () => {
-  return (
+  const { pathname } = useLocation();
+
+  return pathname === "/cart" ? <></> :
     <div className={c.footer}>
       <div className={c.footer_container}>
         {
@@ -69,7 +71,6 @@ const Footer = () => {
         </div>
       </div>
     </div>
-  )
 }
 
 export default Footer

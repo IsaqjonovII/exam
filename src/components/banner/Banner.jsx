@@ -3,31 +3,46 @@ import c from "./Banner.module.css"
 import { FaRegHeart, FaHeart } from "react-icons/fa"
 import { Link, useHistory, useRouteMatch } from 'react-router-dom'
 import { db } from "../../firebase/firebase"
-import { useSelector } from 'react-redux'
-import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
 
 function Banner() {
+  const dispatch = useDispatch()
   const [hoverImg, setHoverImg] = useState(false)
   const [hoverlike, setHoverLike] = useState(false)
-  const route = useRouteMatch()
+  const { url } = useRouteMatch()
   const [data, setData] = useState([])
   const history = useHistory();
   const user = useSelector(state => state.auth)
+  const pro = useSelector(state => state.product)
 
-  const fetchData = () => {
-    try {
-      axios.get("products")
-      .then((product) => console.log(product.data))
-      .catch(err => console.log(err))
-    } catch (error) {
-      console.log(error)
+  
+  const addToCart = (data) => {
+    let itemIndex = pro.findIndex(i => i.id === data.id)
+    
+    if(itemIndex < 0){
+      let newItem = {
+        ...data,
+        qty: 1
+      }
+      dispatch({ type: "ADD_TO_CART", payload: [...pro, newItem] })
+    }
+    else {
+      const newOrder = pro.map((orderedPro, inx) => {
+        if(inx === itemIndex){
+          return {
+            ...orderedPro,
+            qty: orderedPro.qty + 1
+          }
+        }
+        else {
+          return orderedPro
+        }
+      })
+      dispatch({ type: "ADD_TO_CART", payload: newOrder })
     }
   }
+  console.log(pro)
 
-  useEffect(() => {
-    fetchData();
-    return () => fetchData()
-  }, [])
 
   const toggle = index => {
     if (hoverImg === index) {
@@ -49,7 +64,7 @@ function Banner() {
       like()
     }
     else {
-      history.push("/register")
+      history.push("/login")
     }
 
   }
@@ -85,11 +100,11 @@ function Banner() {
                 <p>new collection</p>
                 <div className={c.icon} onMouseOver={() => like(item.id)} onMouseOut={() => setHoverLike(false)}>
                   {
-                    hoverlike === item.id ? <FaHeart onMouseOver={hasUser} /> : <FaRegHeart />
+                    hoverlike === item.id ? <FaHeart onClick={hasUser} /> : <FaRegHeart />
                   }
                 </div>
               </div>
-              <Link to={`products/${item.id}`}>
+              <Link to={`${url}`}>
                 <div className={c.wrapper_img} onMouseOver={() => toggle(item.id)}
                   onMouseOut={() => setHoverImg(false)}>
                   {
@@ -102,6 +117,7 @@ function Banner() {
                   <h4> {item?.Price} </h4>
                 </div>
               </Link>
+              <button onClick={() => addToCart(item)} className={c.btn} >Add To Cart</button>
             </div>
           )
         }

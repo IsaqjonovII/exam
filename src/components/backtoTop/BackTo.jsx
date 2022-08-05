@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BsChevronUp } from "react-icons/bs"
 import c from "../footer/Footer.module.css"
 
@@ -19,10 +19,12 @@ export default function BackToTop() {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
-      /* you can also use 'auto' behaviour
-         in place of 'smooth' */
     });
   };
+
+  useEffect(() => {
+    scrollToTop()
+  }, [])
 
   window.addEventListener('scroll', toggleVisible);
 

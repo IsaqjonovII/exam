@@ -18,6 +18,8 @@ import reducer from './context/reducer';
 const persistConfig = {
   key: 'root',
   storage,
+  blocklist: [],
+  whitelist: ["product", "auth"]
 }
 const persistedReducer = persistReducer(persistConfig, reducer)
 

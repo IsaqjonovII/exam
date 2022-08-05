@@ -17,7 +17,10 @@ const Login = ({ func }) => {
     firebase.auth()
       .signInWithEmailAndPassword(email, password)
       .then(e => {
-        e && history.push("/products")
+        if(e){
+          history.push("/products")
+          setLog(false)
+        } 
       })
       .catch(err => console.log(err))
   }
@@ -47,7 +50,7 @@ const Login = ({ func }) => {
         <a href="https://www.hogan.com/ww-en/password-forget/">Have you forgotten your login details?</a>
         
         <button type='submit' className={c.btn_login}>Login</button>
-        <button onClick={async () => {await firebase.auth().signOut()}} className={c.btn_login}>Login</button>
+        <button onClick={async () => {await firebase.auth().signOut()}} className={c.btn_login}>Logout</button>
       </form>
 
       <div className={c.register}>
