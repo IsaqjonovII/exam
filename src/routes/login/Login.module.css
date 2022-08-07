@@ -1,6 +1,6 @@
 .login {
   width: 318px;
-  height: 700px;
+  height: calc(100vh - 100px);
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
@@ -8,9 +8,9 @@
   right: 0;
   top: 100px;
   transition: 300ms ease;
-  z-index: 5;
+  z-index: 2;
   padding: 20px 0px 0px 0px;
-box-shadow: 0 -9px 0px 0 white, 0 -9px 0px 0px white, 12px 0 15px -4px rgba(0, 0, 0, 0.56), -12px 0 15px -4px rgba(0, 0, 0, 0.56);
+/* box-shadow: 0 -9px 0px 0 white, 0 -9px 0px 0px white, 12px 0 15px -4px rgba(0, 0, 0, 0.56), -12px 0 15px -4px rgba(0, 0, 0, 0.56); */
 }
 
 .container {

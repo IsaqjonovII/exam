@@ -205,3 +205,16 @@ form > h4 {
     text-transform: uppercase;
     margin: auto;
 }
+
+label > input{
+    margin-right: 10px;
+}
+
+.err {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    text-align: center;
+    color: red;
+    margin: auto;
+}

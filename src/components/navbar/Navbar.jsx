@@ -19,23 +19,33 @@ const Navbar = ({ condition, func }) => {
   const [navbar, setNavbar] = useState(false)
   const { pathname } = useLocation();
 
+  const setThemAllFalse = () => {
+    if (condition) {
+      setNavbarHover(false)
+      setWoman(false)
+      setMan(false)
+      setJunior(false)
+      setRebel(false)
+    }
+  }
+
   function changeNavStyle() {
-    if(window.scrollY >= 300)
-    setNavbar(true)
+    if (window.scrollY >= 300)
+      setNavbar(true)
     else {
       setNavbar(false)
     }
-  } 
+  }
   window.addEventListener('scroll', changeNavStyle)
 
-const getAuth = () => {
-  if(auth) {
-    history.push("/cart")
+  const getAuth = () => {
+    if (auth) {
+      history.push("/cart")
+    }
+    else {
+      history.push("/register")
+    }
   }
-  else {
-    history.push("/register")
-  }
-}
 
   return pathname === "/cart" ? <></> :
     <div className={navbar ? c.navbarChanged : c.navbar} onMouseOut={() => {
@@ -62,7 +72,7 @@ const getAuth = () => {
         <div className={navbar ? c.u_icon : c.user_icon}>
 
           <BsBag onClick={getAuth} />
-          <IoPersonSharp onClick={func} />
+          <IoPersonSharp onClick={pathname === "/register" ? !condition : func} />
           <ImSearch />
         </div>
 
@@ -71,12 +81,14 @@ const getAuth = () => {
         <li>
 
           <h2 onMouseOver={() => {
+            condition ?
+            setThemAllFalse() :
             setNavbarHover(true)
           }} style={navbarHover ? { transform: "scaleX(1)" } : null} >
             <Link to="/products">Sneakers</Link> </h2>
-          <div className={c.onHover} style={navbarHover ? { transform: "scaleY(1)" } : null} 
-          onMouseOut={() => setNavbarHover(false)}
-          onMouseOver={() => setNavbarHover(true)}>
+          <div className={c.onHover} style={navbarHover ? { transform: "scaleY(1)" } : null}
+            onMouseOut={() => setNavbarHover(false)}
+            onMouseOver={() => setNavbarHover(true)}>
             {
               NAVBAR_DATA.Sneakers?.map((item, index) =>
                 <div className={c.link} key={index}
@@ -106,10 +118,12 @@ const getAuth = () => {
         </li>
         <li>
           <h2 onMouseOver={() => {
+            condition ? 
+            setThemAllFalse() :
             setWoman(true)
           }}> Woman </h2>
-          <div className={c.on_hover} 
-          style={woman ? { transform: "scaleY(1)" } : null}
+          <div className={c.on_hover}
+            style={woman ? { transform: "scaleY(1)" } : null}
             onMouseOut={() => setWoman(false)}
             onMouseOver={() => setWoman(true)}>
             <div className={c.links_container}>
@@ -159,6 +173,8 @@ const getAuth = () => {
         </li>
         <li>
           <h2 onMouseOver={() => {
+            condition ?
+            setThemAllFalse() :
             setMan(true)
           }}> Man </h2>
           <div className={c.on_hover} style={man ? { transform: "scaleY(1)" } : null}
@@ -211,6 +227,8 @@ const getAuth = () => {
         </li>
         <li>
           <h2 onMouseOver={() => {
+            condition ? 
+            setThemAllFalse() :
             setJunior(true)
           }}> Juinor </h2>
           <div className={c.onHover} style={junior ? { transform: "scaleY(1)" } : null}
@@ -244,6 +262,8 @@ const getAuth = () => {
         </li>
         <li>
           <h2 onMouseOver={() => {
+            condition ?
+            setThemAllFalse() :
             setRebel(true)
           }}> Rebel Society</h2>
           <div className={c.onHover} style={rebel ? { transform: "scaleY(1)", padding: "10px 0px 50px 150px" } : null}

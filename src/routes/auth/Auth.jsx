@@ -1,31 +1,30 @@
 import React, { useState } from 'react'
 import c from "./Auth.module.css"
-import {auth} from "../../firebase/firebase"
-import { useHistory, useLocation } from "react-router-dom"
+import { auth } from "../../firebase/firebase"
+import { useHistory } from "react-router-dom"
 import { useDispatch } from "react-redux"
 
 function Auth() {
   const history = useHistory()
   const [email, setEmail] = useState(null)
   const [password, setPassword] = useState('')
-  const location = useLocation();
   const dispatch = useDispatch();
-
-  console.log(location.pathname)
-
+  const [err, setErr] = useState('')
 
   const createUser = (e) => {
     e.preventDefault();
     auth.createUserWithEmailAndPassword(email, password)
       .then(user => {
-        if(user){
-          dispatch({type: "SIGN_USER", payload: user})
+        if (user) {
+          dispatch({ type: "SIGN_USER", payload: user })
           history.push("/")
           return true;
         }
       })
-      .catch(err => console.log(err))
+      .catch(err => setErr('The email address is already in use by another account. Please use another email'))
   }
+
+  // console.log(err);
 
   return (
     <div className={c.auth}>
@@ -44,7 +43,7 @@ function Auth() {
               <option value="mrs">Ms.</option>
             </select>
             <input type="text" placeholder='FIRST NAME*' required className={c.inp} />
-            <input type="text" placeholder='LAST NAME*' required className={c.inp}/>
+            <input type="text" placeholder='LAST NAME*' required className={c.inp} />
 
             <select required>
               <option value="rest of world">Rest Of World</option>
@@ -74,9 +73,9 @@ function Auth() {
             </div>
             <div className={c.password}>
               <label htmlFor="">Password*</label>
-              <input required type="password"  onChange={(e) => setPassword(e.target.value)} />
+              <input required type="password" minLength={8} onChange={(e) => setPassword(e.target.value)} />
             </div>
-            <h4>Minimum 6 characters and 1 upper case character</h4>
+            <h4>Minimum 8 characters and 1 upper case character</h4>
 
             <div className={c.checkbox_con}>
               <h4>By proceeding with the creation of an account, I acknowledge the Privacy Policy and I agree to</h4>
@@ -89,6 +88,7 @@ function Auth() {
                 <input type="checkbox" id="service" />
                 Customised Services
               </label>
+              {err && <h3 className={c.err}>{err}</h3>}
               <button type='submit'>Confirm and register</button>
             </div>
           </form>
