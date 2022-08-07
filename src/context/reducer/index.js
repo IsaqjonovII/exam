@@ -7,5 +7,4 @@ const reducer = combineReducers({
     product: product,
 })
 
-
 export default reducer

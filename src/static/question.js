@@ -1,5 +1,7 @@
+import { BsTelephone } from "react-icons/bs"
 const question_data = [
     {
+        icon: <BsTelephone />,
         ques: "Need Help?",
         anw: "+39 0734 861429 (Mon-Fri 8am-5pm) Weekends and Bank Holidays excluded",
         extra: "book a call back"

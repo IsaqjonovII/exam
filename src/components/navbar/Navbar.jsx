@@ -4,41 +4,48 @@ import { ImLocation, ImSearch } from "react-icons/im"
 import { IoPersonSharp } from "react-icons/io5";
 import { BsQuestionCircle, BsBag } from "react-icons/bs"
 import Logo from "../../assets/Logo.png";
-import Login from "../../routes/login/Login"
 import NAVBAR_DATA, { shopByStyle } from '../../static/navbar_static';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-const Navbar = () => {
+const Navbar = ({ condition, func }) => {
   const history = useHistory()
-  const user = useSelector(state => state.auth)
+  const auth = useSelector(state => state.auth)
   const [navbarHover, setNavbarHover] = useState(false);
   const [woman, setWoman] = useState(false);
   const [man, setMan] = useState(false);
   const [junior, setJunior] = useState(false)
   const [rebel, setRebel] = useState(false);
-  const [loginModal, setLoginModal] = useState(false)
-  const { pathname } = useLocation()
+  const [navbar, setNavbar] = useState(false)
+  const { pathname } = useLocation();
 
-  const loginUser = () => {
-    if(user){
-      history.push("/cart")
-      setLoginModal(false)
-    }
+  function changeNavStyle() {
+    if(window.scrollY >= 300)
+    setNavbar(true)
     else {
-      setLoginModal(!loginModal)
+      setNavbar(false)
     }
+  } 
+  window.addEventListener('scroll', changeNavStyle)
+
+const getAuth = () => {
+  if(auth) {
+    history.push("/cart")
   }
+  else {
+    history.push("/register")
+  }
+}
 
   return pathname === "/cart" ? <></> :
-    <div className={c.navbar} onMouseOut={() => {
+    <div className={navbar ? c.navbarChanged : c.navbar} onMouseOut={() => {
       setNavbarHover(false)
       setWoman(false)
       setMan(false)
       setJunior(false)
       setRebel(false)
     }}>
-      <div className={c.navigation_top}>
+      <nav className={navbar ? c.nav_top : c.navigation_top}>
 
         <div className={c.user_icon}>
           <ImLocation />
@@ -47,34 +54,33 @@ const Navbar = () => {
         </div>
 
         <Link to="/">
-          <div className={c.nav_logo}>
+          <div className={navbar ? c.logo_nav : c.nav_logo}>
             <img src={Logo} alt="Hogan logo" />
           </div>
         </Link>
 
-        <div className={c.user_icon}>
-          
-            {
-              user ?  <IoPersonSharp onClick={loginUser} /> : <BsBag onClick={() => history.push("/cart")} /> 
-            }
+        <div className={navbar ? c.u_icon : c.user_icon}>
+
+          <BsBag onClick={getAuth} />
+          <IoPersonSharp onClick={func} />
           <ImSearch />
         </div>
 
-      </div>
-      <div className={c.navigation_btm}>
+      </nav>
+      <div className={navbar ? c.nav_btm : c.navigation_btm}>
         <li>
-          
+
           <h2 onMouseOver={() => {
             setNavbarHover(true)
-            setLoginModal(false)
-          }} style={navbarHover ? { transform: "scaleX(1)" } : null} > 
-          <Link to="/products">Sneakers</Link> </h2>
-          <div className={c.onHover} style={navbarHover ? { transform: "scaleY(1)" } : null} onMouseOut={() => setNavbarHover(false)}
-            onMouseOver={() => setNavbarHover(true)}>
+          }} style={navbarHover ? { transform: "scaleX(1)" } : null} >
+            <Link to="/products">Sneakers</Link> </h2>
+          <div className={c.onHover} style={navbarHover ? { transform: "scaleY(1)" } : null} 
+          onMouseOut={() => setNavbarHover(false)}
+          onMouseOver={() => setNavbarHover(true)}>
             {
-              NAVBAR_DATA.Sneakers?.map(item =>
-                <div className={c.link} key={item.id}
-                style={navbarHover ? { opacity: 1, transition: "800ms ease-in" } : { opacity: 0, transition: "150ms" }}>
+              NAVBAR_DATA.Sneakers?.map((item, index) =>
+                <div className={c.link} key={index}
+                  style={navbarHover ? { opacity: 1, transition: "1.3s ease-in" } : null}>
 
                   <ul className={c.big_collection} >
                     <li><h3> {item.title} </h3></li>
@@ -101,16 +107,16 @@ const Navbar = () => {
         <li>
           <h2 onMouseOver={() => {
             setWoman(true)
-            setLoginModal(false)
           }}> Woman </h2>
-          <div className={c.on_hover} style={woman ? { transform: "scaleY(1)" } : null}
+          <div className={c.on_hover} 
+          style={woman ? { transform: "scaleY(1)" } : null}
             onMouseOut={() => setWoman(false)}
             onMouseOver={() => setWoman(true)}>
             <div className={c.links_container}>
               {
-                NAVBAR_DATA.Woman?.map(item =>
+                NAVBAR_DATA.Woman?.map((item, index) =>
 
-                  <div className={c.links} key={item.id}
+                  <div className={c.links} key={index}
                     style={woman ? { opacity: 1, transition: "800ms ease-in" } : null}>
                     <ul className={c.big_collection}>
                       <li><h3> {item.title} </h3></li>
@@ -154,16 +160,15 @@ const Navbar = () => {
         <li>
           <h2 onMouseOver={() => {
             setMan(true)
-            setLoginModal(false)
           }}> Man </h2>
           <div className={c.on_hover} style={man ? { transform: "scaleY(1)" } : null}
             onMouseOut={() => setMan(false)}
             onMouseOver={() => setMan(true)}>
             <div className={c.links_container}>
               {
-                NAVBAR_DATA.Man?.map(item =>
+                NAVBAR_DATA.Man?.map((item, index) =>
 
-                  <div className={c.links} key={item.id}
+                  <div className={c.links} key={index}
                     style={man ? { opacity: 1, transition: "800ms ease-in" } : null}>
                     <ul className={c.big_collection}>
                       <li><h3> {item.title} </h3></li>
@@ -207,14 +212,13 @@ const Navbar = () => {
         <li>
           <h2 onMouseOver={() => {
             setJunior(true)
-            setLoginModal(false)
           }}> Juinor </h2>
           <div className={c.onHover} style={junior ? { transform: "scaleY(1)" } : null}
             onMouseOut={() => setJunior(false)}
             onMouseOver={() => setJunior(true)}>
             {
-              NAVBAR_DATA.Junior?.map(item =>
-                <div className={c.link} key={item.id} style={junior ? { opacity: 1, transition: "800ms ease-in" } : { opacity: 0, transition: "150ms" }}>
+              NAVBAR_DATA.Junior?.map((item, index) =>
+                <div className={c.link} key={index} style={junior ? { opacity: 1, transition: "800ms ease-in" } : { opacity: 0, transition: "150ms" }}>
 
                   <ul className={c.big_collection}>
                     <li><h3> {item.title} </h3></li>
@@ -241,14 +245,13 @@ const Navbar = () => {
         <li>
           <h2 onMouseOver={() => {
             setRebel(true)
-            setLoginModal(false)
           }}> Rebel Society</h2>
           <div className={c.onHover} style={rebel ? { transform: "scaleY(1)", padding: "10px 0px 50px 150px" } : null}
             onMouseOut={() => setRebel(false)}
             onMouseOver={() => setRebel(true)}>
             {
-              NAVBAR_DATA.Rebel?.map(item =>
-                <div className={c.link} key={item.id} style={rebel ? { opacity: 1, transition: "800ms ease-in" } : { opacity: 0, transition: "150ms" }}>
+              NAVBAR_DATA.Rebel?.map((item, index) =>
+                <div className={c.link} key={index} style={rebel ? { opacity: 1, transition: "800ms ease-in" } : { opacity: 0, transition: "150ms" }}>
 
                   <ul className={c.big_collection}>
                     <li><h3> {item.title} </h3></li>
@@ -274,10 +277,7 @@ const Navbar = () => {
         </li>
 
       </div>
-      {
-        loginModal ? <Login /> : <></>
-      }
-      <div className={woman || navbarHover || man || junior || loginModal || rebel ? c.shadow : c.fade} onClick={() => setLoginModal(false)}></div>
+      <div className={woman || navbarHover || man || junior || rebel ? c.shadow : c.fade}></div>
 
 
     </div>

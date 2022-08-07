@@ -1,8 +1,23 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap');
+:root {
+  --main-bg-color: #f7f7f7;
+  --main-font-color: #222;
+  --font: 'Cabin', sans-serif;
+}
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font);
+  scroll-behavior: smooth;
+}
+
+a{
+  color: inherit;
+  text-decoration: inherit;
+}
+
+::selection {
+  color: #1a1a1a;
+  background-color: #919191;
 }

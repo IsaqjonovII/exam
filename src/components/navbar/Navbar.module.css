@@ -24,6 +24,123 @@
   z-index: 3;
 }
 
+/* V--V---> WHEN SCROLLING <---V--V */
+
+.navbarChanged {
+  width: 100%;
+  height: 140px;
+  position: fixed;
+  top: -70px;
+  display: flex;
+  align-items: flex-end;
+  transform: translateY(0);
+  transition: 250ms all;
+  background-color: #fff;
+  z-index: 5;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+}
+
+.nav_top > .user_icon {
+  display: none;
+}
+
+.logo_nav {
+  width: 106px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  position: absolute;
+  left: 140px;
+  top: 65%;
+  transform: translateY(-35%);
+}
+
+.logo_nav img {
+  z-index: 5;
+  width: 100%;
+  object-fit: cover;
+}
+
+.nav_btm {
+  min-width: 50%;
+  height: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #ffffff;
+  margin-right: 25%;
+  list-style-type: none;
+  font-size: 13px;
+}
+
+
+
+.nav_btm > .on_hover{
+  width: 100%;
+  max-height: 75vh;
+  background-color: #ffffff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  color: #1a1a1a;
+  transform: scaleY(0);
+  transform-origin: top;
+  border-top: 1px solid #919191;
+  transition: 400ms ease-in-out;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 0px 25px 0px;
+}
+
+.nav_top > .u_icon {
+  width: 200px;
+  max-height: 100%;
+  position: absolute;
+  right: 10%;
+  display: flex;
+  background-color: #ffffff;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 25px;
+}
+
+.nav_btm > li > h2 {
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 500;
+  height: 80px;
+  position: relative;
+  padding: 40px 20px 0px 20px;
+  cursor: pointer;
+  background-color: #ffffff;
+}
+.nav_btm a {
+  color: inherit;
+  text-decoration: inherit;
+}
+.nav_btm h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 10px;
+  width: 100%;
+  height: 2px;
+  transform: scaleX(0);
+  transition: transform 350ms ease-in;
+  transform-origin: center;
+  background-color: #1a1a1a;
+}
+
+.nav_btm h2:hover::after {
+  transform: scaleX(1);
+  transform-origin: center;
+}
+
+
+/* ^--^---> WHEN SCROLLING <---^--^ */
 .nav_logo {
   width: 406px;
   height: 60px;
@@ -79,8 +196,10 @@
   font-size: 18px;
   font-weight: 500;
   height: 40px;
+  padding: 0px 20px;
   position: relative;
   cursor: pointer;
+  background-color: #ffffff;
 }
 .navigation_btm a {
   color: inherit;
@@ -94,7 +213,7 @@
   width: 100%;
   height: 2px;
   transform: scaleX(0);
-  transition: transform 350ms ease-in;
+  transition: 350ms all !important;
   transform-origin: center;
   background-color: #1a1a1a;
 }
@@ -103,10 +222,11 @@
   transform: scaleX(1);
   transform-origin: center;
 }
+
+
 .onHover {
-  max-width: 100%;
   width: 100%;
-  min-height: 40vh;
+  max-height: 60vh;
   position: absolute;
   top: 140px;
   left: 0;
@@ -116,18 +236,20 @@
   background-color: #ffffff;
   transform: scaleY(0);
   border-top: 1px solid #919191;
-  transition: 400ms ease-out;
+  transition: 400ms ease-in-out;
   padding: 0px 0px 0px 150px;
   transform-origin: top;
+
 }
 
 .link {
   width: 180px;
   height: 100%;
   margin: 10px 20px;
-  /* opacity: 0; */
-  transition: 250ms;
+  background-color: #ffffff;
   padding: 10px 0;
+  opacity: 0;
+  transition: 200ms ease-in-out;
 }
 
 .big_collection {
@@ -172,7 +294,6 @@
 .on_hover {
   width: 100%;
   max-height: 75vh;
-  height: 100%;
   background-color: #ffffff;
   position: absolute;
   top: 140px;

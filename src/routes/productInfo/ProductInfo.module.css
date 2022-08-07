@@ -1,0 +1,171 @@
+.single_pro {
+  width: 100%;
+  min-height: 130vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 20px 0px;
+}
+
+.single_pro_container {
+  width: 85%;
+  height: 100%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: flex-start;
+}
+
+.single_pro_img {
+  width: 50%;
+  height: 100%;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.single_pro_img img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.desc {
+  width: 50%;
+  min-height: 80vh;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.desc > h1 {
+  width: 60%;
+  height: 74px;
+  background-color: #ffffff;
+}
+
+#p   {
+    color: #919191;
+    font-size: 13px;
+    border-bottom: 1px solid #b3b3b3;
+    font-weight: 300;
+    padding: 5px 0px;
+    margin: 0px 0px 10px 0px;
+}
+
+.icons {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 15px;
+}
+
+.icons > p {
+  font-weight: 200;
+  color: #212121;
+  text-transform: uppercase;
+}
+
+.icons svg {
+  color: #b3b3b3;
+  font-size: 18px;
+}
+
+.question {
+  width: 100%;
+  min-height: 70px;
+  background-color: #fff;
+  margin: auto;
+}
+
+.question {
+  border-bottom: 1px solid #0000006f;
+}
+
+.ques_data {
+  width: 90%;
+  min-height: 80px;
+  margin: -10px auto 10px auto;
+}
+
+
+
+
+.img_container_color {
+    width: 100px;
+    height: 100px;
+    transition: 2s ease;
+    margin: 10px 10px;
+    border: 1px solid transparent;
+}
+
+.img_container_color:hover {
+    border: 1px solid #1a1a1a;
+    transition: 250ms ease;
+}
+
+.img_container_color img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.pro_img_color_con {
+    width: 100%;
+    min-height: 120px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.ability {
+    width: 60%;
+    height: 534px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #fff;
+}
+
+.ability_card {
+    width: 280px;
+    height: 323px;
+    background-color: #fff;
+    display: grid;
+    place-items: center;
+    text-align: center;
+}
+
+.ability_card h3 {
+    width: 80%;
+    font-size: 20px;
+    color: #1a1a1a;
+    font-weight: 500;
+}
+
+.ability_card p {
+    width: 85%;
+    font-size: 16px;
+    color: #1a1a1a;
+    font-weight: 300;
+}
+
+.ability_card p:last-child {
+    color: #212121;
+    text-decoration: underline;
+    font-size: 15px;
+}
+
+.card_img {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    background-color: #f3f2f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card_img img {
+    width: 60%;
+    object-fit: cover;
+}

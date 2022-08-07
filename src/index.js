@@ -18,13 +18,14 @@ import reducer from './context/reducer';
 const persistConfig = {
   key: 'root',
   storage,
-  blocklist: [],
-  whitelist: ["product", "auth"]
+  blocklist: ["auth"],
+  whitelist: ["product"]
 }
 const persistedReducer = persistReducer(persistConfig, reducer)
 
 let store = createStore(persistedReducer)
 let persistor = persistStore(store)
+
 
 ReactDOM.render(
   <React.StrictMode>

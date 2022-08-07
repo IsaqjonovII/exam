@@ -19,10 +19,8 @@ function Auth() {
     auth.createUserWithEmailAndPassword(email, password)
       .then(user => {
         if(user){
-          const userData = user.user
           dispatch({type: "SIGN_USER", payload: user})
           history.push("/")
-          console.log(userData)
           return true;
         }
       })

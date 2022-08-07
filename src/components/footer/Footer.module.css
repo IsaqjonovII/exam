@@ -160,21 +160,3 @@
     width: 100%;
     object-fit: cover;
 }
-
-.back_to {
-    width: 50px;
-    height: 50px;
-    border: 1px solid #1a1a1a;
-    background-color: #fff;
-    border-radius: 50%;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #1a1a1a;
-    position: fixed;
-    bottom: 10vh;
-    left: calc(100% - 50px);
-    cursor: pointer;
-}
-

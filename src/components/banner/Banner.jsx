@@ -4,6 +4,7 @@ import { FaRegHeart, FaHeart } from "react-icons/fa"
 import { Link, useHistory, useRouteMatch } from 'react-router-dom'
 import { db } from "../../firebase/firebase"
 import { useDispatch, useSelector } from 'react-redux'
+import Loader from "../loader/Loader"
 
 function Banner() {
   const dispatch = useDispatch()
@@ -15,11 +16,11 @@ function Banner() {
   const user = useSelector(state => state.auth)
   const pro = useSelector(state => state.product)
 
-  
+
   const addToCart = (data) => {
     let itemIndex = pro.findIndex(i => i.id === data.id)
-    
-    if(itemIndex < 0){
+
+    if (itemIndex < 0) {
       let newItem = {
         ...data,
         qty: 1
@@ -28,7 +29,7 @@ function Banner() {
     }
     else {
       const newOrder = pro.map((orderedPro, inx) => {
-        if(inx === itemIndex){
+        if (inx === itemIndex) {
           return {
             ...orderedPro,
             qty: orderedPro.qty + 1
@@ -41,8 +42,6 @@ function Banner() {
       dispatch({ type: "ADD_TO_CART", payload: newOrder })
     }
   }
-  console.log(pro)
-
 
   const toggle = index => {
     if (hoverImg === index) {
@@ -50,7 +49,7 @@ function Banner() {
     }
     setHoverImg(index)
   }
-  
+
   function like(inx) {
     if (hoverlike === inx) {
       return setHoverLike(null)
@@ -83,7 +82,9 @@ function Banner() {
     })
   }, [])
 
-  return (
+
+
+  return !data.length ? <Loader /> : (
     <div className={c.banner}>
       <div className={c.banner_text}>
         <h1>Men's Hogan Rebel </h1>
@@ -104,7 +105,7 @@ function Banner() {
                   }
                 </div>
               </div>
-              <Link to={`${url}`}>
+              <Link to={`${url}/${item.id}`}>
                 <div className={c.wrapper_img} onMouseOver={() => toggle(item.id)}
                   onMouseOut={() => setHoverImg(false)}>
                   {
@@ -114,10 +115,10 @@ function Banner() {
                 </div>
                 <div className={c.title_product}>
                   <h4> {item?.Name} </h4>
-                  <h4> {item?.Price} </h4>
+                  <h4> ${item?.Price} </h4>
                 </div>
               </Link>
-              <button onClick={() => addToCart(item)} className={c.btn} >Add To Cart</button>
+              <button className={c.btn} onClick={() => addToCart(item)}><span className={c.text}>Add To Cart</span><span>ADD TO CART</span></button>
             </div>
           )
         }
