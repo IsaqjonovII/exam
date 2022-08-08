@@ -31,9 +31,9 @@
   width: 100%;
   height: 140px;
   position: fixed;
-  top: -70px;
+  top: -20px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   transform: translateY(0);
   transition: 650ms all;
   background-color: #fff;
@@ -54,8 +54,8 @@
   z-index: 5;
   position: absolute;
   left: 140px;
-  top: 65%;
-  transform: translateY(-35%);
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .logo_nav img {
@@ -112,9 +112,9 @@
   text-transform: uppercase;
   font-size: 18px;
   font-weight: 500;
-  height: 80px;
+  height: 140px;
   position: relative;
-  padding: 40px 20px 0px 20px;
+  padding: 65px 20px 40px 20px;
   cursor: pointer;
   background-color: #ffffff;
 }
@@ -126,7 +126,7 @@
   content: "";
   position: absolute;
   left: 0;
-  bottom: 10px;
+  bottom: 45px;
   width: 100%;
   height: 2px;
   transform: scaleX(0);
