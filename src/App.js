@@ -13,7 +13,6 @@ import Login from "./routes/login/Login";
 import BackToTop from "./components/backtoTop/BackTo";
 import "./App.css";
 
-
 function App() {
   const [shadow, setShadow] = useState(false);
   const shadowChange = () => setShadow(!shadow);
@@ -29,7 +28,7 @@ function App() {
     }
   };
 
-  window.addEventListener('scroll', toggleVisible);
+  window.addEventListener("scroll", toggleVisible);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -54,10 +53,10 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/register" component={Auth} />
-          <Route path="/admin" component={Admin} />
           <Route exact path="/products" component={Banner} />
           <Route path="/products/:id" component={ProductInfo} />
           <Route path="/cart" component={Cart} />
+          <Route path="/admin" component={Admin} />
         </Switch>
         {shadow && <Login condition={shadow} func={shadowChange} />}
 

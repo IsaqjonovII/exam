@@ -13,7 +13,7 @@ function Banner() {
   const { url } = useRouteMatch()
   const [data, setData] = useState([])
   const history = useHistory();
-  const user = useSelector(state => state.auth)
+  const auth = useSelector(state => state.auth)
   const pro = useSelector(state => state.product)
 
 
@@ -59,7 +59,7 @@ function Banner() {
 
   const hasUser = e => {
     e.preventDefault();
-    if (user) {
+    if (auth) {
       like()
     }
     else {
@@ -69,19 +69,21 @@ function Banner() {
   }
 
   useEffect(() => {
-    db.collection("Products").onSnapshot(pro => {
-      setData(pro.docs.map(pro_item => {
-        return {
-          id: pro_item.id,
-          Name: pro_item.data().ProductName,
-          mainImg: pro_item.data().MainImg,
-          hoverImg: pro_item.data().HoverImg,
-          Price: pro_item.data().ProductPrice
-        }
-      }))
-    })
+    setTimeout(() => {
+      db.collection("Products").onSnapshot(pro => {
+        setData(pro.docs.map(pro_item => {
+          return {
+            id: pro_item.id,
+            Name: pro_item.data().ProductName,
+            mainImg: pro_item.data().MainImg,
+            hoverImg: pro_item.data().HoverImg,
+            Price: pro_item.data().ProductPrice,
+            color: pro_item.data().Color
+          }
+        }))
+      })
+    }, 1500);
   }, [])
-
 
 
   return !data.length ? <Loader /> : (
@@ -96,7 +98,7 @@ function Banner() {
       <div className={c.products_container}>
         {
           data?.map(item =>
-            <div className={c.product_wrapper} key={item.id}>
+            <div className={c.product_wrapper} key={item.id}  data-aos="zoom-out-up" >
               <div className={c.wrapper_top}>
                 <p>new collection</p>
                 <div className={c.icon} onMouseOver={() => like(item.id)} onMouseOut={() => setHoverLike(false)}>
@@ -114,7 +116,7 @@ function Banner() {
                   }
                 </div>
                 <div className={c.title_product}>
-                  <h4> {item?.Name} </h4>
+                  <h4> {item?.Name} {item?.color} </h4>
                   <h4> ${item?.Price} </h4>
                 </div>
               </Link>

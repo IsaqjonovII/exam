@@ -10,7 +10,7 @@ const Admin = () => {
   const [hoverImg, setHoverImg] = useState('')
   const [color, setColor] = useState('')
   const [error, setError] = useState('');
-
+  const [percent, setPercent] = useState(0)
   const types = ['image/png', 'image/jpeg', 'image/jpg', 'image/webp']; // image types
 
   const upload = (e) => {
@@ -31,7 +31,7 @@ const Admin = () => {
     const uploadTask = storage.ref(`product-images/${productImg.name}`).put(productImg);
     uploadTask.on('state_changed', (snapshot) => {
       const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      console.log(progress);
+      setPercent(progress)
     }, err => setError(err.message)
       , () => {
         storage.ref('product-images').child(productImg.name).getDownloadURL().then(url => {
@@ -41,9 +41,9 @@ const Admin = () => {
             ProductPrice: Number(productPrice),
             MainImg: mainimg,
             HoverImg: hoverImg,
-            color: color
+            Color: color
           }).then(() => {
-            // setProductName('');
+            setProductName('');
             setProductPrice(0)
             setProductImg('')
             setColor('')
@@ -98,6 +98,9 @@ const Admin = () => {
         </label>
         <button type="submit" className={c.upload_btn}>Create Product</button>
       </form>
+      {
+        percent >= 100 ? <></> : <h3>Uploading... {percent}</h3>
+      }
       {
         error && <span>{ error }</span>
       }

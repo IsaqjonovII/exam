@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import c from "./Auth.module.css"
 import { auth } from "../../firebase/firebase"
-import { useHistory } from "react-router-dom"
+import { useHistory, Link } from "react-router-dom"
 import { useDispatch } from "react-redux"
 
 function Auth() {
@@ -18,13 +18,12 @@ function Auth() {
         if (user) {
           dispatch({ type: "SIGN_USER", payload: user })
           history.push("/")
-          return true;
+          return true
         }
       })
       .catch(err => setErr('The email address is already in use by another account. Please use another email'))
   }
 
-  // console.log(err);
 
   return (
     <div className={c.auth}>
@@ -91,6 +90,7 @@ function Auth() {
               {err && <h3 className={c.err}>{err}</h3>}
               <button type='submit'>Confirm and register</button>
             </div>
+            <Link to="/products">Already have an account ?</Link>
           </form>
         </div>
       </div>

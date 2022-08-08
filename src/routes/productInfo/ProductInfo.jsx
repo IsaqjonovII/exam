@@ -5,10 +5,12 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa"
 import { AiOutlineCheckCircle } from "react-icons/ai"
 import { description } from "../../static/single_page"
 import { Link } from "react-router-dom"
+import Loader from '../../components/loader/Loader';
 
 function ProductInfo({ match }) {
   const [clicked, setClicked] = useState(false)
   const [oneitem, setOneItem] = useState([])
+  const [data, setData] = useState([])
 
   const toggle = index => {
     if (clicked === index) {
@@ -32,12 +34,17 @@ function ProductInfo({ match }) {
     })
   }, [])
 
-  const single = oneitem?.filter(i => i.id === match.params.id)
+  useEffect(() => {
+    setTimeout(() => {
+      setData(oneitem?.filter(i => i.id === match.params.id))
+    }, 1500);
+  }, [match.params.id, oneitem])
 
-  return (
+
+  return !data.length ? <Loader /> : (
     <div className={c.single_pro}>
       {
-        single?.map(p => <div className={c.single_pro_container} key={p.id}>
+        data?.map(p => <div className={c.single_pro_container} key={p.id}>
           <div className={c.single_pro_img}>
             <img src={p.mainImg} alt="" />
           </div>

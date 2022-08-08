@@ -13,6 +13,7 @@
   align-items: center;
   justify-content: space-between;
   background:#ffffff;
+  transition: 250ms;
 }
 
 .navigation_top {
@@ -34,7 +35,7 @@
   display: flex;
   align-items: flex-end;
   transform: translateY(0);
-  transition: 250ms all;
+  transition: 650ms all;
   background-color: #fff;
   z-index: 5;
   box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;

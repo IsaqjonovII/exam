@@ -1,15 +1,15 @@
 .login {
   width: 318px;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 80px);
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
   position: fixed;
-  right: 0;
-  top: 100px;
-  transition: 300ms ease;
+  right: -330px;
+  top: 80px;
+  transition: 1.6s ease;
   z-index: 2;
-  padding: 20px 0px 0px 0px;
+  padding: 45px 0px 0px 0px;
 /* box-shadow: 0 -9px 0px 0 white, 0 -9px 0px 0px white, 12px 0 15px -4px rgba(0, 0, 0, 0.56), -12px 0 15px -4px rgba(0, 0, 0, 0.56); */
 }
 
@@ -20,6 +20,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0px 20px;
+  margin: 15px 0px;
 }
 
 .container svg {

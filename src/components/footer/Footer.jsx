@@ -12,7 +12,7 @@ import { Link, useLocation } from 'react-router-dom';
 const Footer = () => {
   const { pathname } = useLocation();
 
-  return pathname === "/cart" ? <></> :
+  return pathname === "/cart" || pathname === "/login" ? <></> :
     <div className={c.footer}>
       <div className={c.footer_container}>
         {

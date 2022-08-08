@@ -19,6 +19,8 @@ const Login = ({ func, condition }) => {
       .signInWithEmailAndPassword(email, password)
       .then(e => {
         if (e) {
+          e.uid === "gY1vLfjnWbcZwbVuaTY5Vr4C5Kh1" ?
+          history.push("/admin"):
           history.push("/products")
         }
       })
@@ -27,7 +29,7 @@ const Login = ({ func, condition }) => {
 
   return location.pathname === "/register" || location.pathname === "/admin" ? <></> :
 
-    <div className={c.login} style={con ? { right: 0, opacity: 1, transform: "scale(1)", transition: "350ms" } : { right: "-330px", opacity: 0, transition: "200ms", transform: "scaleX(0)" }}>
+    <div className={c.login} style={con && { right: 0, opacity: 1, transition: "1.5s" }}>
       <div className={c.container}>
         <h2>Login</h2>
         <FaTimes onClick={func} />

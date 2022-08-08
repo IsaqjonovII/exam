@@ -47,7 +47,7 @@ const Navbar = ({ condition, func }) => {
     }
   }
 
-  return pathname === "/cart" ? <></> :
+  return pathname === "/cart" || pathname === "/login" ? <></> :
     <div className={navbar ? c.navbarChanged : c.navbar} onMouseOut={() => {
       setNavbarHover(false)
       setWoman(false)
