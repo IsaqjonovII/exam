@@ -1,4 +1,4 @@
-  .cart {
+.cart {
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -15,7 +15,7 @@ nav {
   margin: 10px auto;
 }
 
-nav > a> img {
+nav > a > img {
   width: 150px;
   object-fit: cover;
 }
@@ -89,7 +89,8 @@ tr {
   height: 150px;
   display: flex;
   flex-direction: column;
-  background-color: #fff;
+  justify-content: space-between;
+  background-color: #ffffff;
   margin: 10px 0px;
   padding: 0px 25px;
   text-align: left;
@@ -97,13 +98,14 @@ tr {
 
 .td_desc h3 {
   background-color: #fff;
+  padding: 5px 0;
 }
 
 .td_price {
   width: 150px;
   height: 144px;
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 400; 
 }
 
 .cart_counter button {
@@ -162,7 +164,7 @@ tr {
   height: 80px;
   display: flex;
   flex-wrap: wrap;
-  margin: 10px 0px; 
+  margin: 10px 0px;
 }
 
 .img_con {
@@ -178,7 +180,7 @@ tr {
 
 .questions {
   width: 600px;
-  min-height: 40vh;   
+  min-height: 40vh;
   background-color: #fff;
   margin: auto;
 }
@@ -188,9 +190,9 @@ tr {
 }
 
 .ques_data {
-    width: 90%;
-    min-height: 80px;
-    margin: 20px auto 0px auto;
+  width: 90%;
+  min-height: 80px;
+  margin: 20px auto 0px auto;
 }
 
 .ques_data p {
@@ -198,7 +200,6 @@ tr {
   line-height: 20px;
   margin: 10px 0;
 }
-
 
 .remove {
   width: 100%;
@@ -264,6 +265,13 @@ tr {
   height: 45px;
   border: none;
   background-color: #000000;
-color: #fff ;
-font-size: 18px;
+  color: #fff;
+  transition: 200ms ease;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.code button:active {
+  transform: scale(.9);
+  transition: 200ms ease;
 }

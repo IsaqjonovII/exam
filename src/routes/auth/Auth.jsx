@@ -54,11 +54,11 @@ function Auth() {
             <div className={c.gender}>
               <h4>Gender</h4>
               <label htmlFor="woman">
-                <input required type="radio" name="gender" id="woman" />
+                <input type="radio" name="gender" id="woman" />
                 Woman
               </label>
               <label htmlFor="man">
-                <input required type="radio" name="gender" id="man" />
+                <input type="radio" name="gender" id="man" />
                 Man
               </label>
             </div>
@@ -90,7 +90,7 @@ function Auth() {
               {err && <h3 className={c.err}>{err}</h3>}
               <button type='submit'>Confirm and register</button>
             </div>
-            <Link to="/products">Already have an account ?</Link>
+            <Link to="/products"><h3>Already have an account ?</h3></Link>
           </form>
         </div>
       </div>

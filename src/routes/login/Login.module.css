@@ -10,7 +10,7 @@
   transition: 1.6s ease;
   z-index: 2;
   padding: 45px 0px 0px 0px;
-/* box-shadow: 0 -9px 0px 0 white, 0 -9px 0px 0px white, 12px 0 15px -4px rgba(0, 0, 0, 0.56), -12px 0 15px -4px rgba(0, 0, 0, 0.56); */
+  /* box-shadow: 0 -9px 0px 0 white, 0 -9px 0px 0px white, 12px 0 15px -4px rgba(0, 0, 0, 0.56), -12px 0 15px -4px rgba(0, 0, 0, 0.56); */
 }
 
 .container {
@@ -78,8 +78,16 @@ form p {
   color: #fff;
   border: none;
   margin: 10px 20px;
+  transition: 350ms ease;
   font-size: 17px;
   cursor: pointer;
+}
+
+.btn_login:hover {
+  background-color: #f7f7f7;
+  color: #1a1a1a;
+  border: 2px solid #1a1a1a;
+  transition: 300ms ease;
 }
 
 form a {
@@ -122,4 +130,10 @@ form a {
   background-color: #1a1a1a;
   color: #fff;
   transition: 250ms ease;
+}
+
+.err {
+  width: 100%;
+  text-align: center;
+  color: red;
 }

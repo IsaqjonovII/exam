@@ -20,14 +20,13 @@ const Login = ({ func, condition }) => {
       .then(e => {
         if (e) {
           e.uid === "gY1vLfjnWbcZwbVuaTY5Vr4C5Kh1" ?
-          history.push("/admin"):
-          history.push("/products")
+            history.push("/admin") :
+            history.push("/products")
         }
       })
       .catch(err => setErr("Email or password is incorrect"))
   }
-
-  return location.pathname === "/register" || location.pathname === "/admin" ? <></> :
+  return location.pathname === "/admin" ? <></> :
 
     <div className={c.login} style={con && { right: 0, opacity: 1, transition: "1.5s" }}>
       <div className={c.container}>
@@ -50,16 +49,12 @@ const Login = ({ func, condition }) => {
             onChange={e => setPassword(e.target.value)}
             minLength={8} />
         </div>
-        {err && <div style={{ width: "100%", textAlign: "center", color: "red", }}>
+        {err && <div className={c.err}>
           <h4>{err}</h4>
           <a href="https://www.hogan.com/ww-en/password-forget/">Have you forgotten your login details?</a>
         </div>}
 
         <button type='submit' className={c.btn_login}>Login</button>
-        <button onClick={async () => { 
-          await firebase.auth().signOut()
-          setCon(!condition)
-         }} className={c.btn_login}>Logout</button>
       </form>
 
       <div className={c.register}>

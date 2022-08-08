@@ -16,6 +16,8 @@ function Cart() {
   const pro = useSelector(state => state.product)
   const [clicked, setClicked] = useState(false);
   const [inset, setInsert] = useState(false)
+  const [code, setCode] = useState(false)
+  const [promocode, setPromoCode] = useState('')
 
   const toggle = index => {
     if (clicked === index) {
@@ -96,7 +98,7 @@ function Cart() {
                 <td className={c.td_desc}>
                   <h3>{productItem.Name}</h3>
                   <p>Size: 8</p>
-                  <p>Colour: {productItem.Color}</p>
+                  <p>Colour: {productItem.color}</p>
                   <div className={c.remove} title='Delete?' onClick={() => removePro(productItem)}><FaTimes />
                     <p className={c.remove} > Remove</p>
                   </div>
@@ -160,17 +162,17 @@ function Cart() {
               <p onClick={() => setInsert(!inset)} style={{ textDecoration: "underline", color: "#919191", textTransform: "uppercase", cursor: "pointer", userSelect: "none" }}>insert</p>
             </div>
             <div className={c.code} style={inset ? { transform: "scaleY(1)", transformOrigin: "top", transition: "250ms ease" } : { transformOrigin: "top", transform: "scaleY(0)", transition: "250ms ease" }}>
-              <input type="text" placeholder='Enter Code' />
-              <button>Add</button>
+              <input type="text" onChange={e => setPromoCode(e.target.value)} placeholder='Enter Code' />
+              <button onClick={() => {promocode === "ILHOMJON" ? setCode(true) : setCode(false)}} >Add</button>
             </div>
           </div>
           <div className={c.code}>
             <p>Sub total</p>
-            <p>${pro?.reduce((a, b) => a + (b.qty * b.Price), 0)}</p>
+            <p>$ {code ? pro?.reduce((a, b) => a + ((b.qty * b.Price) / 2), 0) : pro?.reduce((a, b) => a + (b.qty * b.Price), 0)} </p>
           </div>
           <div className={c.code}>
             <p>Total</p>
-            <p>${pro?.reduce((a, b) => a + (b.qty * b.Price), 0)}</p>
+            <p>${code ? pro?.reduce((a, b) => a + ((b.qty * b.Price) / 2), 0 ) : pro?.reduce((a, b) => a + (b.qty * b.Price), 0)}</p>
           </div>
         </div>
       </div>

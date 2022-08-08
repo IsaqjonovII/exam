@@ -10,7 +10,6 @@
     height: 100%;
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
     margin: auto;
 }
 
@@ -24,10 +23,10 @@
 }
 
 .container_form {
-    width: calc(100% - 630px);
+    max-width: 70%;
     height: 100%;
-    padding: 10px 20px;
-    background-color: #fff;
+    margin: 0px 25px;
+    background-color: #ffffff;
 }
 
 .container_form form {
@@ -35,13 +34,13 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    background-color: #fff;
+    background-color: #ffffff;
 }
 form h1 {
     color: #1a1a1a;
     font-size: 26px;
     line-height: 26px;
-    margin: 0px 0px 5px 0px;
+    margin: 0px 0px 5px 40px;
 }
 
 .p {
@@ -52,10 +51,12 @@ form h1 {
 }
 
 .container_form select {
-    width: 410px;
+    width: 400px;
     height: 45px;
-    padding: 0px 15px;
-    margin: 10px auto;outline: none;
+    /* padding: 0px 0px; */
+    text-indent: 10px;
+    margin: 10px auto;
+    outline: none;
     border: 1px solid #919191;
     
 }
@@ -66,16 +67,17 @@ form h1 {
 }
 
 .inp {
-    width: 410px;
+    width: 400px;
     height: 45px;
-    padding: 0px 15px;
+    /* padding: 0px 0px; */
+    text-indent: 10px;
     outline: none;
     border: 1px solid #919191;
     margin: 10px auto;
 }
 
 .gender {
-    width: 410px;
+    width: 400px;
     height: 40px;
     display: flex;
     align-items: flex-start;
@@ -106,7 +108,7 @@ form h1 {
     border-radius: 0;
 }
 .birthdate {
-    width: 410px;
+    width: 400px;
     height: 40px;
     display: flex;
     align-items: center;
@@ -128,7 +130,7 @@ form h1 {
 }
 
 .email {
-    width: 410px;
+    width: 400px;
     height: 70px;
     display: flex;
     flex-direction: column;
@@ -147,7 +149,7 @@ form h1 {
 
 
 .password {
-    width: 410px;
+    width: 400px;
     height: 70px;
     display: flex;
     flex-direction: column;
@@ -166,7 +168,7 @@ form h1 {
 }
 
 form > h4 {
-    width: 410px;
+    width: 400px;
     height: 25px;
     font-size: 13px;
     margin: 0px auto;
@@ -183,14 +185,14 @@ form > h4 {
 }
 
 .checkbox_con > h4 {
-    width: 410px;
+    width: 400px;
     font-size: 13px;
     font-weight: 400;
     margin: 10px auto 20px;
 }
 
 .checkbox_con label {
-    width: 410px;
+    width: 400px;
     height: 40px;
     margin: 0px auto;
 }
@@ -217,4 +219,14 @@ label > input{
     text-align: center;
     color: red;
     margin: auto;
+}
+
+
+a > h3 {
+    width: 100%;
+    text-align: center;
+}
+
+a > h3:hover {
+    text-decoration: underline;
 }

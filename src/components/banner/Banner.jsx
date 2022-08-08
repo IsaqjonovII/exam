@@ -71,17 +71,17 @@ function Banner() {
   useEffect(() => {
     setTimeout(() => {
       db.collection("Products").onSnapshot(pro => {
-        setData(pro.docs.map(pro_item => {
-          return {
-            id: pro_item.id,
-            Name: pro_item.data().ProductName,
-            mainImg: pro_item.data().MainImg,
-            hoverImg: pro_item.data().HoverImg,
-            Price: pro_item.data().ProductPrice,
-            color: pro_item.data().Color
-          }
-        }))
-      })
+          setData(pro.docs.map(pro_item => {
+            return {
+              id: pro_item.id,
+              Name: pro_item.data().ProductName,
+              mainImg: pro_item.data().MainImg,
+              hoverImg: pro_item.data().HoverImg,
+              Price: pro_item.data().ProductPrice,
+              color: pro_item.data().Color
+            }
+          }))
+        })
     }, 1500);
   }, [])
 
@@ -98,7 +98,7 @@ function Banner() {
       <div className={c.products_container}>
         {
           data?.map(item =>
-            <div className={c.product_wrapper} key={item.id}  data-aos="zoom-out-up" >
+            <div className={c.product_wrapper} key={item.id} data-aos="zoom-out-up" >
               <div className={c.wrapper_top}>
                 <p>new collection</p>
                 <div className={c.icon} onMouseOver={() => like(item.id)} onMouseOut={() => setHoverLike(false)}>

@@ -30,7 +30,7 @@ const Admin = () => {
     e.preventDefault();
     const uploadTask = storage.ref(`product-images/${productImg.name}`).put(productImg);
     uploadTask.on('state_changed', (snapshot) => {
-      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
       setPercent(progress)
     }, err => setError(err.message)
       , () => {
@@ -56,7 +56,6 @@ const Admin = () => {
       })
   }
 
-  // console.log(productName, productImg, productPrice);
 
   return (
     <div className={c.admin}>
@@ -99,7 +98,7 @@ const Admin = () => {
         <button type="submit" className={c.upload_btn}>Create Product</button>
       </form>
       {
-        percent >= 100 ? <></> : <h3>Uploading... {percent}</h3>
+        percent > 100 ? <h3>Uploading... {percent} </h3> : <h3>Uploaded {percent} </h3>
       }
       {
         error && <span>{ error }</span>
