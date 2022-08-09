@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import c from "./Navbar.module.css";
-import { ImLocation, ImSearch } from "react-icons/im"
-import { IoPersonSharp } from "react-icons/io5";
-import { BsQuestionCircle, BsBag } from "react-icons/bs"
-import Logo from "../../assets/Logo.png";
-import NAVBAR_DATA, { shopByStyle } from '../../static/navbar_static';
-import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { ImLocation, ImSearch } from "react-icons/im"
+import { BsQuestionCircle, BsBag } from "react-icons/bs"
+import { Link, useHistory, useLocation } from 'react-router-dom';
+import NAVBAR_DATA, { shopByStyle } from '../../static/navbar_static';
+import { IoPersonSharp } from "react-icons/io5";
+import Logo from "../../assets/Logo.png";
+import c from "./Navbar.module.css";
 
 const Navbar = ({ condition, func }) => {
   const history = useHistory()
@@ -48,7 +48,7 @@ const Navbar = ({ condition, func }) => {
     }
   }
 
-  return pathname === "/cart" || pathname === "/login" ? <></> :
+  return pathname === "/cart" || pathname === "/admin" ? <></> :
     <div className={navbar ? c.navbarChanged : c.navbar} onMouseOut={() => {
       setNavbarHover(false)
       setWoman(false)
@@ -73,10 +73,9 @@ const Navbar = ({ condition, func }) => {
         <div className={navbar ? c.u_icon : c.user_icon}>
 
           <BsBag onClick={getAuth} />
-          <IoPersonSharp onClick={pathname === "/register" ? !condition : func} />
+          <IoPersonSharp onClick={func} />
           <ImSearch />
         </div>
-
       </nav>
       <div className={navbar ? c.nav_btm : c.navigation_btm}>
         <li>
