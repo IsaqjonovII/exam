@@ -20,13 +20,13 @@ const Login = ({ func, condition }) => {
       .then(e => {
         if (e) {
           e.uid === "gY1vLfjnWbcZwbVuaTY5Vr4C5Kh1" ?
-            history.push("/admin") :
+            history.push("/admin")  :
             history.push("/products")
         }
       })
       .catch(err => setErr("Email or password is incorrect"))
   }
-  return location.pathname === "/admin" ? <></> :
+  return location.pathname === "/admin" || location.pathname === "/cart"  ? <></> :
 
     <div className={c.login} style={con && { right: 0, opacity: 1, transition: "1.5s" }}>
       <div className={c.container}>

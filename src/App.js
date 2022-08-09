@@ -64,7 +64,7 @@ function App() {
 
         <div
           className={shadow ? "shadow" : "fade"}
-          onClick={() => setShadow(false)}
+          onClick={() => setShadow(!shadow)}
         ></div>
 
         <div

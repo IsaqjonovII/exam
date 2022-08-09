@@ -41,7 +41,7 @@ const Navbar = ({ condition, func }) => {
   const getAuth = () => {
     if (auth) {
       history.push("/cart")
-      func(!condition)
+      // func(!condition)
     }
     else {
       history.push("/register")
