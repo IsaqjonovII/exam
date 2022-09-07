@@ -62,7 +62,6 @@ function Cart() {
   }
 
   const removePro = (data) => {
-    
       let filteredPro = pro.filter(i => i.id !== data.id)
       dispatch({ type: "ADD_TO_CART", payload: filteredPro })
   }

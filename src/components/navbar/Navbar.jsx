@@ -41,7 +41,6 @@ const Navbar = ({ condition, func }) => {
   const getAuth = () => {
     if (auth) {
       history.push("/cart")
-      // func(!condition)
     }
     else {
       history.push("/register")
@@ -104,7 +103,6 @@ const Navbar = ({ condition, func }) => {
                         )
                       }
                     </ul>
-
                     <li>{item.titleImg ? <div className={c.hover_img}>
                       <h3> {item.titleImg} </h3>
                       <img src={item.imgUrl} alt="" />
@@ -206,7 +204,6 @@ const Navbar = ({ condition, func }) => {
                       </li>
                     </ul>
                   </div>
-
                 )
               }
             </div>
@@ -283,7 +280,6 @@ const Navbar = ({ condition, func }) => {
                         )
                       }
                     </ul>
-
                     <li>{item.titleImg ? <div className={c.hover_img}>
                       <h3> {item.titleImg} </h3>
                       <img src={item.imgUrl} alt="" />
@@ -295,11 +291,8 @@ const Navbar = ({ condition, func }) => {
             }
           </div>
         </li>
-
       </div>
       <div className={woman || navbarHover || man || junior || rebel ? c.shadow : c.fade}></div>
-
-
     </div>
 }
 
