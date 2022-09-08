@@ -117,22 +117,27 @@
 
 
 .ability {
-    width: 60%;
-    height: 534px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-evenly;
-    background-color: #fff;
+    width: 80%;
+    height: 404px;
+    margin: 100px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 20px;
+    background-color: #ffffff;
 }
 
 .ability_card {
-    width: 280px;
-    height: 323px;
-    background-color: #fff;
+    background-color: #f7f7f7;
     display: grid;
     place-items: center;
     text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.ability_card:hover {
+  background-color: #fff;
 }
 
 .ability_card h3 {

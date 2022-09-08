@@ -3,9 +3,11 @@ import c from "./Footer.module.css"
 import { FOOTER_DATA, payments } from "../../static/footer_data"
 import { BsArrowRight } from "react-icons/bs"
 import { GrLocation } from "react-icons/gr"
-import { FaFacebookF, FaInstagram, FaTwitter, 
-         FaYoutube, FaPinterest, FaTumblr, 
-         FaSpotify, FaWeibo } from "react-icons/fa"
+import {
+  FaFacebookF, FaInstagram, FaTwitter,
+  FaYoutube, FaPinterest, FaTumblr,
+  FaSpotify, FaWeibo
+} from "react-icons/fa"
 import { SiWechat } from "react-icons/si"
 import { Link, useLocation } from 'react-router-dom';
 

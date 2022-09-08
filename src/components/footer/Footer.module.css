@@ -24,14 +24,17 @@
     text-transform: capitalize;
     list-style-type: none;
     line-height: 19px;
-    margin: 16px 0px;
+    margin: 16px;
+    cursor: pointer;
+}
+
+.collection_ul li:hover {
+    color: #919191;
 }
 
 .contact {
     width: 340px;
     height: 500px;
-    /* background-color: deepskyblue; */
-    /* padding: 10px 0px; */
 }
 
 .contact h3 {
@@ -56,7 +59,7 @@
 
 .contact form input {
     width: 232px;
-    height: inherit;
+    height: 100%;
     outline: none;
     border: 1px solid #919191;
     font-size: 14px;
@@ -65,7 +68,7 @@
 }
 
 .contact form button {
-    width: calc(280px - 232px);
+    width: 48px;
     height: 100%;
     border: 1px solid #919191;
     border-left: none;
@@ -114,7 +117,6 @@
 .icons_container svg {
     width: 30px;
     height: 30px;
-    /* font-size: 20px; */
     color: #1a1a1a;
     margin: 0px 10px;
     cursor: pointer;
@@ -152,11 +154,17 @@
 .img_con {
     width: 30px;
     height: 30px;
-    /* background-color: rebeccapurple; */
     margin: 0px 10px;
 }
 
 .img_con img {
     width: 100%;
     object-fit: cover;
+}
+
+@media screen and (max-width: 1100px) {
+    .footer_container {
+        padding: 20px;
+        font: 14px;
+    }
 }
