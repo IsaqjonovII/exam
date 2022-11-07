@@ -63,33 +63,33 @@ const Admin = () => {
       <form onSubmit={createTheProduct} autoComplete="off">
         <label className={c.pro_name}>Product Name
           <input type="text" placeholder="Product Name"
-          value={productName} 
-          required
-          onChange={e => setProductName(e.target.value)} />
+            value={productName}
+            required
+            onChange={e => setProductName(e.target.value)} />
         </label>
         <label className={c.pro_cost}>Product Price
-          <input type="number" placeholder="Product Price" 
-          required
-          value={productPrice} 
-          onChange={e => setProductPrice(e.target.value)} />
+          <input type="number" placeholder="Product Price"
+            required
+            value={productPrice}
+            onChange={e => setProductPrice(e.target.value)} />
         </label>
         <label className={c.pro_cost}>Product Main image URL
-          <input type="text" placeholder="Main image" 
-          required
-          value={mainimg} 
-          onChange={e => setMain(e.target.value)} />
+          <input type="text" placeholder="Main image"
+            required
+            value={mainimg}
+            onChange={e => setMain(e.target.value)} />
         </label>
         <label className={c.pro_cost}>Product Hover image URL
-          <input type="text" placeholder="Hover image" 
-          required
-          value={hoverImg} 
-          onChange={e => setHoverImg(e.target.value)} />
+          <input type="text" placeholder="Hover image"
+            required
+            value={hoverImg}
+            onChange={e => setHoverImg(e.target.value)} />
         </label>
         <label className={c.pro_cost}>Product Color
-          <input type="text" placeholder="Color" 
-          required
-          value={color} 
-          onChange={e => setColor(e.target.value)} />
+          <input type="text" placeholder="Color"
+            required
+            value={color}
+            onChange={e => setColor(e.target.value)} />
         </label>
         <label className={c.pro_file}>
           Only choose image like png, jpeg or jpg
@@ -101,7 +101,7 @@ const Admin = () => {
         percent > 100 ? <h3>Uploading... {percent} </h3> : <h3>Uploaded {percent} </h3>
       }
       {
-        error && <span>{ error }</span>
+        error && <span>{error}</span>
       }
     </div>
   )

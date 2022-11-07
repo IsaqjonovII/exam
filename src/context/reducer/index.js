@@ -3,8 +3,8 @@ import auth from "./auth";
 import product from "./product";
 
 const reducer = combineReducers({
-    auth: auth,
-    product: product,
+    auth,
+    product,
 })
 
 export default reducer
